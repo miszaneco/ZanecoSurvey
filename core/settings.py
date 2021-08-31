@@ -71,9 +71,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME'  : 'db.sqlite3',
+    },
+    
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'zaneco_data',
+        'USER': 'root',
+        'PASSWORD': 'blaise',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 

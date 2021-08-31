@@ -8,3 +8,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Surveys(models.Model):
+    code = models.CharField(max_length=50)
+    stars = models.IntegerField()
+    comments = models.CharField(max_length=255)
+    posting_date = models.DateField(null=True)
+    
+    class Meta: 'Surveys'
+    
