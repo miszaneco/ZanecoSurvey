@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\app",
-    "\\authentication",
-    "\\core"
+    ""
   ],
-  "SelectedNode": "\\core\\templates",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
