@@ -10,14 +10,6 @@ from django.http import HttpResponse
 from django import template
 
 
-def pagesurvey(response):
-    return render(response, 'survey.html', {})
-
-
-def pagesurveycreate(response):
-    return render(response, 'surveycreate.html', {})
-
-
 @login_required(login_url="/login/")
 def index(request):
 

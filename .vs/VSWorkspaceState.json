@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\app",
+    "\\survey"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\survey\\admin.py",
   "PreviewInSolutionExplorer": false
 }
