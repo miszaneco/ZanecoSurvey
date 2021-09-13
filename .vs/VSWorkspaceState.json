@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\survey"
+    "\\survey",
+    "\\survey\\templates"
   ],
-  "SelectedNode": "\\survey\\models.py",
+  "SelectedNode": "\\app",
   "PreviewInSolutionExplorer": false
 }
