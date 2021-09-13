@@ -30,11 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Enable the inner app 
-    'app',
-    
-    # custom apps
+    'app',  # Enable the inner app 
     'survey'
 ]
 
