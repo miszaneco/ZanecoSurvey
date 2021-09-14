@@ -14,7 +14,7 @@ class survey(models.Model):
     rating = models.IntegerField(help_text='Input 1 to 5  only')
     impression = models.CharField(max_length=20, choices=IMPRESSION)
     comments = models.TextField(max_length=255)
-    posting_date = models.DateField(null=True, auto_created=True, verbose_name='Posting Date')
+    posting_date = models.DateField(null=True, auto_now_add=True, verbose_name='Posting Date')
 
     def __str__(self):
         return f"{self.code} - {self.comments}"

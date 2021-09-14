@@ -6,6 +6,9 @@
   <link rel="icon" href="/static/assets/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://appseed.us/adminlte"/>
 
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+
   <title>
     ZANECO App - {% block title %}{% endblock %} | Beta v1.0
   </title> 
@@ -35,7 +38,9 @@ s
 <!-- ./wrapper -->
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+{% endblock javascripts %}
 
 </body>
 </html>

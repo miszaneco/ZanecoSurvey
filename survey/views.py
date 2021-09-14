@@ -7,6 +7,9 @@ from .models import *
 def index(request):
     return render(request, 'surveys.html',{})
 
+def rating(request):
+    return render(request, 'rating.html')
+
 def createsurvey(request):
     if request.method == 'POST':
         form = createSurveyForm(request.POST)
