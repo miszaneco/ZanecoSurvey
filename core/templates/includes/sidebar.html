@@ -43,7 +43,7 @@
         <!-- survey page -->
         <li class="nav-item has-treeview {% if 'survey' in segment %} menu-open {% endif %}">
           <a href="#" class="nav-link {% if 'survey' in segment %} active {% endif %}">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fas fa-star-half-alt"></i>
             <p>Survey
               <i class="right fas fa-angle-left"></i>
             </p>
@@ -52,16 +52,27 @@
             <li class="nav-item">
               <a href="/createsurvey" class="nav-link {% if 'createsurvey' in segment %} active {% endif %}">
                 <!-- <a href="createsurvey.html" class="nav-link {% if 'createsurvey' in segment %} active {% endif %}"> -->
-                <i class="far fa-circle nav-icon"></i>
+                {% comment %} <i class="nav-icon fas fa-tachometer-alt"></i> {% endcomment %}
+                <i class="far fa-star"></i>
                 <p>New Survey</p>
               </a>
             </li>
           </ul>
+
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="/" class="nav-link {% if 'surveys' in segment %} active {% endif %}">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-star-half-alt"></i>
                 <p>Recent Surveys</p>
+              </a>
+            </li>
+          </ul>
+          
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/rating/" class="nav-link {% if 'rating' in segment %} active {% endif %}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Ratings</p>
               </a>
             </li>
           </ul>

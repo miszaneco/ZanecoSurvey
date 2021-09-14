@@ -7,6 +7,7 @@ from django.contrib import admin
 from django.urls import path, include  # add this
 
 urlpatterns = [
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path("", include("survey.urls")),
     path('admin/', admin.site.urls),          # Django admin route
     path("", include("authentication.urls")), # Auth routes - login / register

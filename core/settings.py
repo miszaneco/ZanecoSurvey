@@ -19,7 +19,8 @@ SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 # load production server from .env
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 config('SERVER', default='127.0.0.1')]
 
 # Application definition
 
@@ -31,9 +32,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',  # Enable the inner app 
-    # 'survey'
-    'survey.apps.SurveyConfig',
+    
+    # 3rd Party Apps
+    'star_ratings',
+    
+    # Project Apps
+    'app',  # Enable the inner app
+    'survey',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +55,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'core.urls'
 LOGIN_REDIRECT_URL = "home"   # Route defined in app/urls.py
 LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py
-TEMPLATE_DIR = os.path.join(CORE_DIR, "core/templates")  # ROOT dir for templates
+TEMPLATE_DIR = os.path.join(
+    CORE_DIR, "core/templates")  # ROOT dir for templates
 
 TEMPLATES = [
     {
@@ -76,9 +82,9 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME'  : 'db.sqlite3',
+        'NAME': 'db.sqlite3',
     },
-    
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'zaneco_data',
@@ -135,3 +141,7 @@ STATICFILES_DIRS = (
 )
 #############################################################
 #############################################################
+
+TEMPLATE_CONTEXT_PROCESSORS = [
+    'django.core.context_processors.request',
+]

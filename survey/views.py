@@ -1,11 +1,19 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import createSurveyForm
-from .models import *
+from .models import survey
 
 # Create your views here.
 def index(request):
-    return render(request, 'surveys.html',{})
+    # return render(request, 'surveys.html', {})
+    surveys_list = survey.objects.order_by('id')
+    context = {
+        'objects': surveys_list
+    }
+    return render(request, 'surveys.html', context)
+
+def rating(request):
+    return render(request, 'rating.html')
 
 def createsurvey(request):
     if request.method == 'POST':
@@ -20,4 +28,3 @@ def createsurvey(request):
         context = {'form': form}
         
         return render(request, 'createsurvey.html', context)
-
