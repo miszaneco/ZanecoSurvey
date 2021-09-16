@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import createSurveyForm
-from .models import survey
+from .forms import create_sub_rating_form, create_survey_form
+from .models import survey, sub_rating
 
 # Create your views here.
 @login_required(login_url="/login/")
@@ -14,20 +14,41 @@ def index(request):
     }
     return render(request, 'surveys.html', context)
 
-def rating(request):
-    return render(request, 'rating.html')
-
 @login_required(login_url="/login/")
-def createsurvey(request):
+def create_survey(request):
     if request.method == 'POST':
-        form = createSurveyForm(request.POST)
-        print(form)
+        form = create_survey_form(request.POST)
+        # print(form)
 
         if form.is_valid():
             form.save()
             return redirect('/')
     else:
-        form = createSurveyForm()
+        form = create_survey_form()
         context = {'form': form}
         
-        return render(request, 'createsurvey.html', context)
+        return render(request, 'create_survey.html', context)
+
+@login_required(login_url="/login/")
+def create_sub_rating(request):
+    if request.method == 'POST':
+        form = create_sub_rating_form(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect(sub_ratings)
+    else:
+        form = create_sub_rating_form()
+        context = {'form': form}
+        
+        return render(request, 'create_sub_rating.html', context)
+
+@login_required(login_url="/login/")
+def sub_ratings(request):
+    # return render(request, 'surveys.html', {})
+    ratings_list = sub_rating.objects.order_by('-rate')
+    context = {
+        'objects': ratings_list
+    }
+    return render(request, 'sub_ratings.html', context)
+    
