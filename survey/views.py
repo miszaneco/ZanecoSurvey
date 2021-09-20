@@ -7,12 +7,24 @@ from .models import survey, sub_rating
 # Create your views here.
 @login_required(login_url="/login/")
 def index(request):
-    # return render(request, 'surveys.html', {})
+    return render(request, 'dashboard.html', {})
+
+@login_required(login_url="/login/")
+def surveys(request):
     surveys_list = survey.objects.order_by('uid')
     context = {
         'objects': surveys_list
     }
     return render(request, 'surveys.html', context)
+
+@login_required(login_url="/login/")
+def surveys_by_rate(request, rate):
+    if rate > 0:
+        survey_list = survey.objects.raw(f"SELECT * FROM survey_survey WHERE rate = '{rate}'")
+        context = {
+            'objects': survey_list
+        }
+        return render(request, 'surveys.html', context)
 
 @login_required(login_url="/login/")
 def create_survey(request):

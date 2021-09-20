@@ -32,7 +32,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item active">Sub Ratings</li>
           </ol>
         </div>
@@ -48,34 +48,55 @@
         <!-- left column -->
         <div class="col-md-12">
           <!-- jquery validation -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-header-title">Sub Ratings</h3>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-header-title">Sub Ratings</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row-fluid">
+                        <div class="col text-center"></div>
+                        <table class="table table-striped">
+                            <thead>
+                            <th>UID</th>
+                            <th>Rate Type</th>
+                            <th>Sub Rating</th>
+                            </thead>
+                            <tbody>
+                                {% for object in objects %}
+                                <tr>
+                                    <td><b>{{object.uid}}</td>
+                                    <td>{{object.rate}}</td>
+                                    <td>{{object.rate_type}}</td>
+                                    <td>{{object.sub_rating}}</td>
+                                    <td>
+                                        <button class="btn bg-gradient-success btn-block">
+                                            <i class="fas fa-edit mr-1"></i>
+                                            Update
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn bg-gradient-danger btn-block">
+                                            <i class="fas fa-trash mr-1"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <a href="create_sub_rating">
+                        <button class="btn bg-gradient-info">
+                            <i class="fas fa-plus mr-1"></i>
+                            New Sub-Rating
+                        </button>
+                    </a>
+                </div>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="row-fluid">
-                <div class="col text-center"></div>
-                <table class="table table-striped">
-                  <thead>
-                    <th>UID</th>
-                    <th>Rate Type</th>
-                    <th>Sub Rating</th>
-                  </thead>
-                  <tbody>
-                    {% for object in objects %}
-                      <tr>
-                        <td><b>{{object.uid}}</td>
-                        <td>{{object.rate}}</td>
-                        <td>{{object.rate_type}}</td>
-                        <td>{{object.sub_rating}}</td>
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
           <!-- /.card -->
         </div>
         <!--/.col (left) -->

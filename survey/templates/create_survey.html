@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+<!-- Custom style -->
+<link rel="stylesheet" href="/static/css/styles.css">
 
 {% endblock stylesheets %}
 
@@ -51,38 +53,50 @@
             <!-- /.card-header -->
             <!-- form start -->
             <form class="form-horizontal" method="POST">
-              {% csrf_token %}
-              <!-- {{ form }} -->
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="code">Queue Code</label>
-                  <input type="text" id="id_code" name="code" class="form-control" placeholder="ABC123">
-                </div>
+                {% csrf_token %}
+                <!-- {{ form }} -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="code">Queue Code</label>
+                        <input type="text" id="code" name="code" class="form-control" placeholder="ABC123">
+                    </div>
 
-                <div class="form-group">
-                  <label for="rating">Rating</label>
-                  <input type="number" id="id_rate" name="rate" class="form-control" placeholder="5">
-                </div>
+                    <div class="form-group">
+                        <span class="fa fa-star fa-2x checked" id="Worst"></span>
+                        <span class="fa fa-star fa-2x" id="Poor"></span>
+                        <span class="fa fa-star fa-2x" id="Fair"></span>
+                        <span class="fa fa-star fa-2x" id="Good"></span>
+                        <span class="fa fa-star fa-2x" id="Excellent"></span>
+                    </div>
 
-                <div class="form-group">
-                  <label for="impression">Impression</label>
-                  <select class="custom-select" , id="id_rate_type" name="rate_type" placeholder="Excellent">
-                    <option value="Excellent">Excellent</option>
-                    <option value="Good">Good</option>
-                    <option value="Fair">Fair</option>
-                    <option value="Poor">Poor</option>
-                    <option value="Worst">Worst</option>
-                  </select>
-                </div>
+                    <div class="form-group">
+                        <label for="rate">Rating</label>
+                        <input type="number" id="rate" name="rate" class="form-control" placeholder="5" onchange="get_rate(this)">
+                    </div>
 
-                <div class="form-group">
-                  <label for="code">Comments</label>
-                  <input type="text" name="comments" id="id_comments" class="form-control" placeholder="Comments">
-                </div>
+                    <div class="form-group">
+                        <label for="impression">Impression</label>
+                        <select class="custom-select" , id="ate_type" name="rate_type" placeholder="Excellent">
+                            <option value="Excellent">Excellent</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                            <option value="Poor">Poor</option>
+                            <option value="Worst">Worst</option>
+                        </select>
+                    </div>
 
-                <!-- /.card-body -->
+                    <div class="form-group">
+                        <label for="code">Comments</label>
+                        <input type="text" name="comments" id="comments" class="form-control" placeholder="Comments">
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn bg-gradient-info">
+                        <i class="fas fa-check mr-1"></i>
+                        Submit
+                    </button>
                 </div>
             </form>
           </div>
@@ -104,6 +118,10 @@
 
 {% endblock content %}
 
+<script>
+  
+</script>
+
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
@@ -119,6 +137,7 @@
 <script src="/static/assets/js/demo.js"></script>
 
 <!-- Ratings -->
+<script src="/static/js/functions.js"></script>
 
 <!-- Page specific script -->
 

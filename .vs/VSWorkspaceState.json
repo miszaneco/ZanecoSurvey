@@ -4,6 +4,6 @@
     "\\survey",
     "\\survey\\templates"
   ],
-  "SelectedNode": "\\survey\\templates\\createsurvey.html",
+  "SelectedNode": "\\survey\\views.py",
   "PreviewInSolutionExplorer": false
 }
