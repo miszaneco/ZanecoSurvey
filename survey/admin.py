@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import sub_rating, survey
+from .models import Survey, Sub_Rating
 
 # Register your models here.
-admin.site.register(survey)
-admin.site.register(sub_rating)
+admin.site.register(Survey)
+admin.site.register(Sub_Rating)
 
 admin.site.site_title = 'Zaneco App'
 admin.site.site_header = 'Zaneco App'

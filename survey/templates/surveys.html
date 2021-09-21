@@ -66,14 +66,29 @@
                     <th>Posting Date</th>
                   </thead>
                   <tbody>
-                    {% for object in objects %}
+                    {% for survey in surveys %}
                       <tr>
-                        <td><b>{{object.uid}}</td>
-                        <td>{{object.code}}</td>
-                        <td>{{object.rate}}</td>
-                        <td>{{object.rate_type}}</td>
-                        <td>{{object.comments}}</td>
-                        <td>{{object.posting_date}}</td>
+                        <td><b>{{survey.uid}}</td>
+                        <td>{{survey.code}}</td>
+                        <td>{{survey.rate}}</td>
+                        <td>{{survey.rate_type}}</td>
+                        <td>{{survey.comments}}</td>
+                        <td>{{survey.posting_date}}</td>
+                        <td>
+                          <button class="btn bg-gradient-danger btn-block">
+                              <a href="{% url 'survey_edit' survey.uid %}">
+                                <i class="fas fa-trash mr-1"></i>
+                                Edit
+                              </a>
+                          </button>
+                        </td>
+                        <td>
+                           <button class="btn bg-gradient-danger btn-block">
+                              <a href="{% url 'survey_delete' survey.uid %}"></a>
+                                <i class="fas fa-trash mr-1"></i>
+                                Delete
+                          </button>
+                        </td>
                       </tr>
                     {% endfor %}
                   </tbody>

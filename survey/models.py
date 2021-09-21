@@ -6,7 +6,7 @@ import uuid
 
 # Create your models here.
 
-class sub_rating(models.Model):
+class Sub_Rating(models.Model):
     uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
     
     rate = models.IntegerField(default=0, help_text='Input 1 to 5  only',
@@ -26,7 +26,7 @@ class sub_rating(models.Model):
     def __str__(self):
         return f"{self.rate} [{self.rate_type}] {self.sub_rating}"
     
-class survey(models.Model):
+class Survey(models.Model):
     uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
     
     RATING_TYPE = [

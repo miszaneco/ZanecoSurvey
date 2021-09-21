@@ -1,0 +1,161 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Survey Page {% endblock %}
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+<!-- Custom style -->
+<link rel="stylesheet" href="/static/css/styles.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Customer Satisfaction Survey</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Edit Survey</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- jquery validation -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-header-title">
+                <i class="far fa-smile mr-1"></i>
+                Edit Customer Survey
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form class="form-survey" method="POST">
+              {{ surveys }}
+              {% comment %} <div class="card-body">
+                  <div class="form-group">
+                      <label for="code">
+                        <i class="fas fa-qrcode mr-1"></i>
+                        Queue Code
+                      </label>
+                      <input class="form-control form-control-lg" type="text" id="code" name="code" placeholder="ABC123">
+                  </div>
+
+                  <div class="form-group">
+                      <span class="fa fa-star fa-2x checked" id="Worst"></span>
+                      <span class="fa fa-star fa-2x checked" id="Poor"></span>
+                      <span class="fa fa-star fa-2x checked" id="Fair"></span>
+                      <span class="fa fa-star fa-2x checked" id="Good"></span>
+                      <span class="fa fa-star fa-2x checked" id="Excellent"></span>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="rate">Rate Number</label>
+                      <input class="form-control form-control-lg" type="number" id="rate" name="rate" placeholder="5" onchange="get_rate(this)">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="impression">Rating</label>
+                      <select class="custom-select" , id="rate_type" name="rate_type" placeholder="Excellent">
+                          <option value="Excellent">Excellent</option>
+                          <option value="Good">Good</option>
+                          <option value="Fair">Fair</option>
+                          <option value="Poor">Poor</option>
+                          <option value="Worst">Worst</option>
+                      </select>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="impression">
+                        Sub-Rating
+                      </label>
+                      <select class="form-control form-control-lg" id="sub_rating" name="sub_rating" placeholder="Excellent">
+                          <option value="Excellent">Excellent</option>
+                      </select>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="code">
+                        <i class="far fa-comment-dots mr-1"></i>
+                        Comments
+                      </label>
+                      <textarea class="form-control form-control-lg" rows="3" name="comments" id="comments" placeholder="Input Comments.."></textarea>
+                  </div>
+                  <!-- /.card-body -->
+              </div>
+              
+              <div class="card-footer">
+                  <button type="submit" class="btn btn-lg bg-gradient-info">
+                      <i class="fas fa-check mr-1"></i>
+                      Submit
+                  </button>
+              </div> {% endcomment %}
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-6">
+
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock content %}
+
+<script>
+  
+</script>
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!-- jQuery -->
+<script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery UI -->
+<script src="/static/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/assets/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/assets/js/demo.js"></script>
+
+<!-- Ratings -->
+<script src="/static/js/functions.js"></script>
+
+<!-- Page specific script -->
+
+{% endblock javascripts %}
