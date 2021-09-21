@@ -32,7 +32,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active">Create New Survey</li>
+            <li class="breadcrumb-item active">New Survey</li>
           </ol>
         </div>
       </div>
@@ -48,35 +48,41 @@
           <!-- jquery validation -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-header-title">New Surveys</h3>
+              <h3 class="card-header-title">
+                <i class="far fa-smile mr-1"></i>
+                Create New Survey
+              </h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="POST">
+            <form class="form-survey" method="POST">
                 {% csrf_token %}
                 <!-- {{ form }} -->
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="code">Queue Code</label>
-                        <input type="text" id="code" name="code" class="form-control" placeholder="ABC123">
+                        <label for="code">
+                          <i class="fas fa-qrcode mr-1"></i>
+                          Queue Code
+                        </label>
+                        <input class="form-control form-control-lg" type="text" id="code" name="code" placeholder="ABC123">
                     </div>
 
                     <div class="form-group">
                         <span class="fa fa-star fa-2x checked" id="Worst"></span>
-                        <span class="fa fa-star fa-2x" id="Poor"></span>
-                        <span class="fa fa-star fa-2x" id="Fair"></span>
-                        <span class="fa fa-star fa-2x" id="Good"></span>
-                        <span class="fa fa-star fa-2x" id="Excellent"></span>
+                        <span class="fa fa-star fa-2x checked" id="Poor"></span>
+                        <span class="fa fa-star fa-2x checked" id="Fair"></span>
+                        <span class="fa fa-star fa-2x checked" id="Good"></span>
+                        <span class="fa fa-star fa-2x checked" id="Excellent"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="rate">Rating</label>
-                        <input type="number" id="rate" name="rate" class="form-control" placeholder="5" onchange="get_rate(this)">
+                        <label for="rate">Rate Number</label>
+                        <input class="form-control form-control-lg" type="number" id="rate" name="rate" placeholder="5" onchange="get_rate(this)">
                     </div>
 
                     <div class="form-group">
-                        <label for="impression">Impression</label>
-                        <select class="custom-select" , id="ate_type" name="rate_type" placeholder="Excellent">
+                        <label for="impression">Rating</label>
+                        <select class="custom-select" , id="rate_type" name="rate_type" placeholder="Excellent">
                             <option value="Excellent">Excellent</option>
                             <option value="Good">Good</option>
                             <option value="Fair">Fair</option>
@@ -86,14 +92,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="code">Comments</label>
-                        <input type="text" name="comments" id="comments" class="form-control" placeholder="Comments">
+                        <label for="impression">
+                          Sub-Rating
+                        </label>
+                        <select class="form-control form-control-lg" id="sub_rating" name="sub_rating" placeholder="Excellent">
+                            <option value="Excellent">Excellent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code">
+                          <i class="far fa-comment-dots mr-1"></i>
+                          Comments
+                        </label>
+                        <textarea class="form-control form-control-lg" rows="3" name="comments" id="comments" placeholder="Input Comments.."></textarea>
                     </div>
                     <!-- /.card-body -->
                 </div>
                 
                 <div class="card-footer">
-                    <button type="submit" class="btn bg-gradient-info">
+                    <button type="submit" class="btn btn-lg bg-gradient-info">
                         <i class="fas fa-check mr-1"></i>
                         Submit
                     </button>

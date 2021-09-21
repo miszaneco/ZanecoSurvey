@@ -1,3 +1,5 @@
+console.log('Set Stars')
+
 const Worst = document.getElementById('Worst')
 const Poor = document.getElementById('Poor')
 const Fair = document.getElementById('Fair')
@@ -6,61 +8,64 @@ const Excellent = document.getElementById('Excellent')
 
 const array = [Worst, Poor, Fair, Good, Excellent]
 
+array.forEach(item=>item.addEventListener('click', (event)=>{
+  console.log(event.target.id)
+  setStars(event.target.id)
+}))
+
 const setStars = (selection) => {
-    switch(selection)
+    // console.log(selection)
+    Poor.classList.remove("checked")
+    Fair.classList.remove("checked")
+    Good.classList.remove("checked")
+    Excellent.classList.remove("checked")
+
+    switch (selection)
     {
-        case 'Worst':{
-            Worst.classList.add('checked')
-            Poor.classList.remove('checked')
-            Fair.classList.remove('checked')
-            Good.classList.remove('checked')
-            Excellent.classList.remove('checked')
+        case 'Worst': {
+          Worst.classList.add("checked")
+          return
         }
         
-        case 'Poor':{
-            Worst.classList.add('checked')
-            Poor.classList.add('checked')
-            Fair.classList.remove('checked')
-            Good.classList.remove('checked')
-            Excellent.classList.remove('checked')
+        case 'Poor': {
+          Worst.classList.add('checked')
+          Poor.classList.add('checked')
+          return
         }
         
-        case 'Fair':{
-            Worst.classList.add('checked')
-            Poor.classList.add('checked')
-            Fair.classList.add('checked')
-            Good.classList.remove('checked')
-            Excellent.classList.remove('checked')
+        case 'Fair': {
+          Worst.classList.add('checked')
+          Poor.classList.add('checked')
+          Fair.classList.add('checked')
+          return
         }
 
         case 'Good':{
-            Worst.classList.add('checked')
-            Poor.classList.add('checked')
-            Fair.classList.add('checked')
-            Good.classList.add('checked')
-            Excellent.classList.remove('checked')
+          Worst.classList.add('checked')
+          Poor.classList.add('checked')
+          Fair.classList.add('checked')
+          Good.classList.add('checked')
+          return
         }
 
-        // case 'Excellent':{
-        //     Worst.classList.add('checked')
-        //     Poor.classList.add('checked')
-        //     Fair.classList.add('checked')
-        //     Good.classList.add('checked')
-        //     Excellent.classList.add('checked')
-        // }
+        case 'Excellent':{
+          Worst.classList.add('checked')
+          Poor.classList.add('checked')
+          Fair.classList.add('checked')
+          Good.classList.add('checked')
+          Excellent.classList.add('checked')
+          return
+        }
     }
 }
 
-array.forEach(item=>item.addEventListener('mousedown', (event)=>{
-    setStars(event.target.id)
-}))
 
 
 function get_rate(iRate)
   {
     // var iRate = document.getElementById("rate").value;
     
-    alert(iRate);
+    // console.log(iRate);
     
     switch(iRate)
     {

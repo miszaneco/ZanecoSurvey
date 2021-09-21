@@ -57,7 +57,6 @@ def create_sub_rating(request):
 
 @login_required(login_url="/login/")
 def sub_ratings(request):
-    # return render(request, 'surveys.html', {})
     ratings_list = sub_rating.objects.order_by('-rate')
     context = {
         'objects': ratings_list

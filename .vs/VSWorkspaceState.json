@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\survey",
+    "\\survey\\static",
+    "\\survey\\static\\js",
     "\\survey\\templates"
   ],
-  "SelectedNode": "\\survey\\views.py",
   "PreviewInSolutionExplorer": false
 }
