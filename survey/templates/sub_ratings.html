@@ -54,47 +54,63 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <div class="row-fluid">
-                        <div class="col text-center"></div>
-                        <table class="table table-striped">
-                            <thead>
-                            <th>UID</th>
-                            <th>Rate Type</th>
-                            <th>Sub Rating</th>
-                            </thead>
-                            <tbody>
-                                {% for object in objects %}
-                                <tr>
-                                    <td><b>{{object.uid}}</td>
-                                    <td>{{object.rate}}</td>
-                                    <td>{{object.rate_type}}</td>
-                                    <td>{{object.sub_rating}}</td>
-                                    <td>
-                                        <button class="btn bg-gradient-success btn-block">
-                                            <i class="fas fa-edit mr-1"></i>
-                                            Update
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button class="btn bg-gradient-danger btn-block">
-                                            <i class="fas fa-trash mr-1"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                  <div class="row-fluid">
+                    <a href="/sub_rating_create">
+                      <button class="btn bg-gradient-primary">
+                        <i class="fas fa-plus"></i>
+                        New Sub-Rating
+                      </button>
+                    </a>
+                    <button class="btn bg-gradient-primary ml-2" href = "/..">
+                      <i class="fas fa-backspace"></i>
+                      Go Back
+                    </button>
+                    <table class="table table-hover mt-2">
+                        <thead>
+                        <th>UID</th>
+                        <th>Rate</th>
+                        <th>Rate Type</th>
+                        <th>Sub Rating</th>
+                        <th>Actions</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                            {% for sub_rating in sub_ratings %}
+                            <tr>
+                                <td><b>{{sub_rating.uid}}</td>
+                                <td>{{sub_rating.rate}}</td>
+                                <td>{{sub_rating.rate_type}}</td>
+                                <td>{{sub_rating.sub_rating}}</td>
+                                <td>
+                                  <a class="btn bg-gradient-warning btn-block" href="{% url 'sub_rating_edit' sub_rating.uid %}">
+                                    <i class="fas fa-edit mr-1"></i>
+                                      Edit
+                                  </a>
+                                </td>
+                                <td>
+                                  <a class="btn bg-gradient-danger btn-block" href="{% url 'sub_rating_delete' sub_rating.uid %}">
+                                    <i class="fas fa-trash mr-1"></i>
+                                      Delete
+                                  </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                  </div>
                 </div>
 
                 <div class="card-footer">
-                    <a href="create_sub_rating">
-                        <button class="btn bg-gradient-info">
-                            <i class="fas fa-plus mr-1"></i>
-                            New Sub-Rating
-                        </button>
-                    </a>
+                  <a href="/sub_rating_create">
+                    <button class="btn bg-gradient-primary">
+                      <i class="fas fa-plus mr-1"></i>
+                      New Sub-Rating
+                    </button>
+                  </a>
+                  <button type="button" class="btn bg-gradient-primary ml-2" onClick="javascript:history.go(-1)">
+                    <i class="fas fa-backspace mr-1"></i>
+                    Go Back
+                  </button>
                 </div>
             </div>
           <!-- /.card -->

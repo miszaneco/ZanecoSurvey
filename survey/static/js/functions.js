@@ -70,6 +70,7 @@ function get_rate(iRate)
     switch(iRate)
     {
       case 1:
+        
         rate = 'Worst';
         break;
       

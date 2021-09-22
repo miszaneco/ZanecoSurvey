@@ -9,6 +9,8 @@ urlpatterns = [
     path('surveys', views.surveys, name='surveys'),
     path('surveys_by_rate/<int:rate>', views.surveys_by_rate, name='surveys_by_rate'),
     
-    path('create_sub_rating', views.create_sub_rating, name='create_sub_rating'),
+    path('sub_rating_create', views.sub_rating_create, name='sub_rating_create'),
+    path('sub_rating_edit/<uid>', views.sub_rating_edit, name='sub_rating_edit'),
+    path('sub_rating_delete/<uid>', views.sub_rating_delete, name='sub_rating_delete'),
     path('sub_ratings', views.sub_ratings, name='sub_ratings'),
 ]

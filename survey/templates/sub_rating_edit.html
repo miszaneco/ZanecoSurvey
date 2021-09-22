@@ -27,12 +27,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Customer Satisfaction Survey</h1>
+          <h1>Sub-Rating Management</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active">Edit Survey</li>
+            <li class="breadcrumb-item active">Edit Sub-Rating</li>
           </ol>
         </div>
       </div>
@@ -56,51 +56,39 @@
             <!-- /.card-header -->
             <!-- form start -->
             <div class="card-body">
-              <form class="form-survey-edit" method="POST" action="">
+              <form class="form-sub-rating-edit" method="POST" action="">
                 {% csrf_token %}
+                {% comment %} {{ form.as_p }} {% endcomment %}
+
                 <div class="form-group">
-                  <label for="code">
-                    <i class="fas fa-qrcode mr-1"></i>
-                    Queue Code
-                  </label>
-                  <input class="form-control form-control-lg" type="text" id="code" name="code" maxlength="10" required value="{{ survey.code }}">
+                  <label for="rating">Rating</label>
+                  <input type="number" id="rate" name="rate" class="form-control" required value="{{ sub_rating.rate }}"/>
                 </div>
 
                 <div class="form-group">
-                  <label for="rate">Rate Number</label>
-                  <input class="form-control form-control-lg" type="number" id="rate" name="rate" required value="{{ survey.rate }}">
-                </div>
-
-                <div class="form-group">
-                  <label for="rate_type">Rating</label>
-                  <select class="form-control form-control-lg" id="rate_type" name="rate_type" value="{{ survey.rate_type }}">
-                      <option value="Excellent">Excellent</option>
-                      <option value="Good">Good</option>
-                      <option value="Fair">Fair</option>
-                      <option value="Poor">Poor</option>
-                      <option value="Worst">Worst</option>
+                  <label for="rate_type">Impression</label>
+                  <select class="custom-select" id="rate_type" name="rate_type" value="{{ sub_rating.rate_type }}">
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Poor">Poor</option>
+                    <option value="Worst">Worst</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="code">
-                    <i class="far fa-comment-dots mr-1"></i>
-                    Comments
-                  </label>
-                  <textarea class="form-control form-control-lg" rows="3" id="comments" name="comments">{{ survey.comments }}</textarea>
+                  <label for="sub_rating">Sub Rating</label>
+                  <input type="text" name="sub_rating" id="sub_rating" class="form-control" required value="{{ sub_rating.sub_rating }}"/>
                 </div>
 
-                <div form-group>
-                  <input type="submit" value="Update" class="btn bg-gradient-success"></input>
-                  
-                  <button type="button" class="btn bg-gradient-primary ml-2" onClick="javascript:history.go(-1)">
-                    <i class="fas fa-backspace mr-1"></i>
-                    Go Back
-                  </button>
-                </div>
+                <input type="submit" value="Update" class="btn bg-gradient-success"></input>
+                
+                <button type="button" class="btn bg-gradient-primary ml-2" onClick="javascript:history.go(-1)">
+                  <i class="fas fa-backspace mr-1"></i>
+                  Go Back
+                </button>
               </form>
             </div>
-            <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
