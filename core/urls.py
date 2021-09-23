@@ -10,6 +10,6 @@ urlpatterns = [
     # path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('admin/', admin.site.urls),          # Django admin route
     path("", include("authentication.urls")), # Auth routes - login / register
-    # path("", include("app.urls")),             # UI Kits Html files
     path("", include("survey.urls")),
+    path("", include("app.urls")),             # UI Kits Html files
 ]

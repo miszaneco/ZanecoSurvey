@@ -4,23 +4,19 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import os
-from decouple import config
-from unipath import Path
-import dj_database_url
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
+SECRET_KEY = 'django-insecure-al_@cudtjz2bwzb3xh83c3g3_$2zal&64u!x9f#095_%xkg*kp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = True
 
-# load production server from .env
-ALLOWED_HOSTS = ['localhost', '127.0.0.1',
-                 config('SERVER', default='127.0.0.1')]
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -34,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # 3rd Party Apps
-    'star_ratings',
+    # 'star_ratings',
     
     # Project Apps
     'app',  # Enable the inner app
@@ -55,8 +51,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'core.urls'
 LOGIN_REDIRECT_URL = "home"   # Route defined in app/urls.py
 LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py
-TEMPLATE_DIR = os.path.join(
-    CORE_DIR, "core/templates")  # ROOT dir for templates
+TEMPLATE_DIR = os.path.join(CORE_DIR, "core/templates")  # ROOT dir for templates
 
 TEMPLATES = [
     {

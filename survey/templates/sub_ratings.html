@@ -56,13 +56,19 @@
                 <div class="card-body">
                   <div class="row-fluid">
                     <a href="/sub_rating_create">
-                      <button class="btn bg-gradient-primary">
-                        <i class="fas fa-plus"></i>
+                      <button class="btn bg-gradient-success">
+                        <i class="fas fa-plus mr-1"></i>
                         New Sub-Rating
                       </button>
                     </a>
-                    <button class="btn bg-gradient-primary ml-2" href = "/..">
-                      <i class="fas fa-backspace"></i>
+                    <a href="/surveys">
+                      <button type="button" class="btn bg-gradient-primary">
+                        <i class="fas fa-sync mr-1"></i>
+                        Reload
+                      </button>
+                    </a>
+                    <button class="btn bg-gradient-primary ml-5" onClick="javascript:history.go(-1)">
+                      <i class="fas fa-backspace mr-1"></i>
                       Go Back
                     </button>
                     <table class="table table-hover mt-2">
@@ -102,12 +108,18 @@
 
                 <div class="card-footer">
                   <a href="/sub_rating_create">
-                    <button class="btn bg-gradient-primary">
+                    <button class="btn bg-gradient-success">
                       <i class="fas fa-plus mr-1"></i>
                       New Sub-Rating
                     </button>
                   </a>
-                  <button type="button" class="btn bg-gradient-primary ml-2" onClick="javascript:history.go(-1)">
+                  <a href="/surveys">
+                    <button type="button" class="btn bg-gradient-primary">
+                      <i class="fas fa-sync mr-1"></i>
+                      Reload
+                    </button>
+                  </a>
+                  <button type="button" class="btn bg-gradient-primary ml-5" onClick="javascript:history.go(-1)">
                     <i class="fas fa-backspace mr-1"></i>
                     Go Back
                   </button>
