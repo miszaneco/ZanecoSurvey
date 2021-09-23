@@ -56,13 +56,18 @@
             <div class="card-body">
               <div class="row-fluid">
                 <a href="/survey_create">
-                  <button type="button" class="btn bg-gradient-primary">
+                  <button type="button" class="btn bg-gradient-success">
                     <i class="fas fa-plus mr-1"></i>
                     New Survey
                   </button>
                 </a>
-                
-                <button type="button" class="btn bg-gradient-primary ml-2" onClick="javascript:history.go(-1)">
+                <a href="/surveys">
+                  <button type="button" class="btn bg-gradient-primary">
+                    <i class="fas fa-sync mr-1"></i>
+                    Reload
+                  </button>
+                </a>
+                <button type="button" class="btn bg-gradient-primary ml-5" onClick="javascript:history.go(-1)">
                   <i class="fas fa-backspace mr-1"></i>
                   Go Back
                 </button>
@@ -88,17 +93,19 @@
                         <td>{{survey.comments}}</td>
                         <td>{{survey.posting_date}}</td>
                         <td>
-                          <a type="button" class="btn bg-gradient-warning btn-block" href="{% url 'survey_edit' survey.uid %}">
-                            <i class="fas fa-edit mr-1"></i>
+                          <a href="{% url 'survey_edit' survey.uid %}">
+                            <button type="button" class="btn bg-gradient-warning btn-block">
+                              <i class="fas fa-edit mr-1"></i>
                               Edit
+                            </button>
                           </a>
                         </td>
                         <td>
-                            {% comment %} <button href="{% url 'survey_delete' survey.uid %}"  {% endcomment %}
-                          <a class="btn bg-gradient-danger btn-block" href="{% url 'survey_delete' survey.uid %}">
+                          {% comment %} <button href="{% url 'survey_delete' survey.uid %}"  {% endcomment %}
+                          <button type="button" id="btnDelete" class="btn bg-gradient-danger btn-block" data-toggle="modal" data-target="#deleteModal">
                             <i class="fas fa-trash mr-1"></i>
                               Delete
-                          </a>
+                          </button>
                         </td>
                       </tr>
                     {% endfor %}
@@ -109,13 +116,18 @@
 
             <div class="card-footer">
               <a href="/survey_create">
-                <button type="button" class="btn bg-gradient-primary">
+                <button type="button" class="btn bg-gradient-success">
                   <i class="fas fa-plus mr-1"></i>
                   New Survey
                 </button>
               </a>
-              
-              <button type="button" class="btn bg-gradient-primary ml-2" onClick="javascript:history.go(-1)">
+              <a href="/surveys">
+                <button type="button" class="btn bg-gradient-primary">
+                  <i class="fas fa-sync mr-1"></i>
+                  Reload
+                </button>
+              </a>
+              <button type="button" class="btn bg-gradient-primary ml-5" onClick="javascript:history.go(-1)">
                 <i class="fas fa-backspace mr-1"></i>
                 Go Back
               </button>
@@ -125,6 +137,9 @@
         </div>
       </div>
       <!-- /.row -->
+      <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+      </a>
     </div>
     <!-- /.container-fluid -->
   </section>
@@ -132,20 +147,24 @@
 </div>
 <!-- /.content-wrapper -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Delete Customer Survey</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Do you want to Delete the selected Customer Survey</p>
+        <p>Do you want to Delete selected Customer Survey?<br>Click 'Delete' button to confirm.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Delete</button>
+        <button type="button" class="btn bg-gradient-primary" id="btnDelete" >
+          <i class="fas fa-trash mr-1"></i>
+          Delete
+        </button>
       </div>
     </div>
   </div>
