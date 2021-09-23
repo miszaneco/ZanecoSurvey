@@ -43,8 +43,8 @@
         <!-- survey page -->
         <li class="nav-item has-treeview {% if 'survey' in segment %} menu-open {% endif %}">
           <a href="#" class="nav-link {% if 'survey' in segment %} active {% endif %}">
-            <i class="fas fa-poll"></i>
-            <p>Customer Survey
+            <i class="fas fa-poll mr-1"></i>
+              <p>Customer Survey
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -61,23 +61,23 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="/survey_create" class="nav-link {% if 'survey_create' in segment %} active {% endif %}">
-                <i class="far fa-star"></i>
+                <i class="fas fa-star"></i>
                 <p>New Survey</p>
               </a>
             </li>
           </ul>
         </li>
 
-        <li class="nav-item has-treeview {% if 'survey' in segment %} menu-open {% endif %}">
-          <a href="#" class="nav-link {% if 'survey' in segment %} active {% endif %}">
-            <i class="fas fa-tasks"></i>
+        <li class="nav-item has-treeview {% if 'rating' in segment %} menu-open {% endif %}">
+          <a href="#" class="nav-link {% if 'rating' in segment %} active {% endif %}">
+            <i class="fas fa-tasks mr-1"></i>
             <p>Management<i class="right fas fa-angle-left"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="/sub_ratings" class="nav-link {% if 'sub_ratings' in segment %} active {% endif %}">
-                <i class="far fa-smile"></i>
-                <p>Rating Management</p>
+                <i class="far fa-meh"></i>
+                <p>Sub Ratings</p>
               </a>
             </li>
           </ul>
@@ -85,7 +85,7 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="/sub_rating_create" class="nav-link {% if 'sub_rating_create' in segment %} active {% endif %}">
-                <i class="far fa-smile"></i>
+                <i class="far fa-meh"></i>
                 <p>Create Sub Rating</p>
               </a>
             </li>

@@ -17,10 +17,15 @@ def survey_create(request):
         if form.is_valid():
             object = form.save(commit=False)
             object.save()
-            return redirect('/')
+            return redirect(surveys)
     else:
         form = FormSurvey()
-        context = {'form': form}
+        sub_ratings = Sub_Rating.objects.raw(f"SELECT * FROM survey_sub_ratings WHERE rate = 1")
+        
+        context = {
+            'form': form
+            
+            }
         
         return render(request, 'survey_create.html', context)
     
@@ -93,7 +98,7 @@ def sub_rating_edit(request, uid):
     return render(request, 'sub_rating_edit.html', context)
 
 def sub_rating_delete(request, uid):
-    sub_rating = Survey.objects.get(pk=uid)
+    sub_rating = Sub_Rating.objects.get(pk=uid)
     sub_rating.delete()
     return redirect(sub_ratings)
 

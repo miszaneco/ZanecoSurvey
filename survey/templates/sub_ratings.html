@@ -61,7 +61,7 @@
                         New Sub-Rating
                       </button>
                     </a>
-                    <a href="/surveys">
+                    <a href="/sub_ratings">
                       <button type="button" class="btn bg-gradient-primary">
                         <i class="fas fa-sync mr-1"></i>
                         Reload
@@ -81,26 +81,30 @@
                         <th></th>
                         </thead>
                         <tbody>
-                            {% for sub_rating in sub_ratings %}
-                            <tr>
-                                <td><b>{{sub_rating.uid}}</td>
-                                <td>{{sub_rating.rate}}</td>
-                                <td>{{sub_rating.rate_type}}</td>
-                                <td>{{sub_rating.sub_rating}}</td>
-                                <td>
-                                  <a class="btn bg-gradient-warning btn-block" href="{% url 'sub_rating_edit' sub_rating.uid %}">
-                                    <i class="fas fa-edit mr-1"></i>
-                                      Edit
-                                  </a>
-                                </td>
-                                <td>
-                                  <a class="btn bg-gradient-danger btn-block" href="{% url 'sub_rating_delete' sub_rating.uid %}">
-                                    <i class="fas fa-trash mr-1"></i>
-                                      Delete
-                                  </a>
-                                </td>
-                            </tr>
-                            {% endfor %}
+                          {% for sub_rating in sub_ratings %}
+                          <tr>
+                            <td><b>{{sub_rating.uid}}</td>
+                            <td>{{sub_rating.rate}}</td>
+                            <td>{{sub_rating.rate_type}}</td>
+                            <td>{{sub_rating.sub_rating}}</td>
+                            
+                            {% if user.is_authenticated %}
+                              <td>
+                                <a class="btn bg-gradient-warning btn-block" href="{% url 'sub_rating_edit' sub_rating.uid %}">
+                                  <i class="fas fa-edit mr-1"></i>
+                                    Edit
+                                </a>
+                              </td>
+                              <td>
+                                <!-- <a class="btn bg-gradient-danger btn-block" href="{% url 'sub_rating_delete' sub_rating.uid %}"> -->
+                                <a class="btn bg-gradient-danger btn-block" href="">
+                                  <i class="fas fa-trash mr-1"></i>
+                                    Delete
+                                </a>
+                              </td>
+                            {% endif %}
+                          </tr>
+                          {% endfor %}
                         </tbody>
                     </table>
                   </div>
@@ -113,7 +117,7 @@
                       New Sub-Rating
                     </button>
                   </a>
-                  <a href="/surveys">
+                  <a href="/sub_ratings">
                     <button type="button" class="btn bg-gradient-primary">
                       <i class="fas fa-sync mr-1"></i>
                       Reload
@@ -128,9 +132,9 @@
           <!-- /.card -->
         </div>
         <!--/.col (left) -->
-        <!-- right column -->
-        <div class="col-md-6"></div>
-        <!--/.col (right) -->
+        <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+          <i class="fas fa-chevron-up"></i>
+        </a>
       </div>
       <!-- /.row -->
     </div>

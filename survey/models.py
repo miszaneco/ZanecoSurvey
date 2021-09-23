@@ -29,7 +29,7 @@ class Sub_Rating(models.Model):
 class Survey(models.Model):
     uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
     
-    RATING_TYPE = [
+    RATE_TYPE = [
         ('Excellent', 'Excellent'),
         ('Good', 'Good'),
         ('Fair', 'Fair'),
@@ -45,7 +45,7 @@ class Survey(models.Model):
             MaxValueValidator(5)
         ]
     )
-    rate_type = models.CharField(max_length=20, choices=RATING_TYPE)
+    rate_type = models.CharField(max_length=20, choices=RATE_TYPE)
     sub_rating = models.TextField(max_length=255, null=True, blank=True)
     comments = models.TextField(max_length=255, null=True, blank=True)
     posting_date = models.DateField(null=True, auto_now_add=True, verbose_name='Posting Date')

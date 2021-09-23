@@ -92,21 +92,24 @@
                         <td>{{survey.rate_type}}</td>
                         <td>{{survey.comments}}</td>
                         <td>{{survey.posting_date}}</td>
-                        <td>
-                          <a href="{% url 'survey_edit' survey.uid %}">
-                            <button type="button" class="btn bg-gradient-warning btn-block">
-                              <i class="fas fa-edit mr-1"></i>
-                              Edit
+                        
+                        {% if user.is_authenticated %}
+                          <td>
+                            <a href="{% url 'survey_edit' survey.uid %}">
+                              <button type="button" class="btn bg-gradient-warning btn-block">
+                                <i class="fas fa-edit mr-1"></i>
+                                Edit
+                              </button>
+                            </a>
+                          </td>
+                          <td>
+                            {% comment %} <button href="{% url 'survey_delete' survey.uid %}"  {% endcomment %}
+                            <button type="button" id="btnDelete" class="btn bg-gradient-danger btn-block" data-toggle="modal" data-target="#deleteModal">
+                              <i class="fas fa-trash mr-1"></i>
+                                Delete
                             </button>
-                          </a>
-                        </td>
-                        <td>
-                          {% comment %} <button href="{% url 'survey_delete' survey.uid %}"  {% endcomment %}
-                          <button type="button" id="btnDelete" class="btn bg-gradient-danger btn-block" data-toggle="modal" data-target="#deleteModal">
-                            <i class="fas fa-trash mr-1"></i>
-                              Delete
-                          </button>
-                        </td>
+                          </td>
+                        {% endif %}
                       </tr>
                     {% endfor %}
                   </tbody>
