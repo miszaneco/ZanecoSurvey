@@ -7,7 +7,18 @@ from .models import Survey, Sub_Rating
 # Create your views here.
 @login_required(login_url="/login/")
 def index(request):
-    return render(request, 'dashboard.html', {})
+    surveyExcellent = Survey.objects.filter(rate_type__contains='Excellent').count()
+    surveyGood = Survey.objects.filter(rate_type__contains='Good').count()
+    surveyFair = Survey.objects.filter(rate_type__contains='Fair').count()
+    surveyPoor = Survey.objects.filter(rate_type__contains='Poor').count()
+    context = {
+        'surveyExcellent': surveyExcellent,
+        'surveyGood': surveyGood,
+        'surveyFair': surveyFair,
+        'surveyPoor': surveyPoor,
+    }
+    
+    return render(request, 'dashboard.html', context)
 
 @login_required(login_url="/login/")
 def survey_create(request):
@@ -17,15 +28,15 @@ def survey_create(request):
         if form.is_valid():
             object = form.save(commit=False)
             object.save()
-            return redirect(surveys)
+            return redirect(survey_create)
     else:
         form = FormSurvey()
-        sub_ratings = Sub_Rating.objects.raw(f"SELECT * FROM survey_sub_ratings WHERE rate = 1")
+        sub_ratings = Sub_Rating.objects.all().values('sub_rating')
         
         context = {
-            'form': form
-            
-            }
+            'form': form,
+            'sub_ratings': sub_ratings,
+        }
         
         return render(request, 'survey_create.html', context)
     
@@ -33,17 +44,21 @@ def survey_create(request):
 def survey_edit(request, uid):
     survey = Survey.objects.get(pk=uid)
     form = FormSurvey(request.POST or None, instance=survey)
+    sub_ratings = Sub_Rating.objects.all().values('sub_rating')
     
-    if form.is_valid():
-        object = form.save(commit=False)
+    if request.method == 'POST':
+        if form.is_valid():
+            object = form.save(commit=False)
         object.save()
         return redirect(surveys)
     
-    context = {
-        'form': form,
-        'survey': survey,
-    }
-    return render(request, 'survey_edit.html', context)
+    else:
+        context = {
+            'form': form,
+            'survey': survey,
+            'sub_ratings': sub_ratings,
+        }
+        return render(request, 'survey_edit.html', context)
 
 def survey_delete(request, uid):
     survey = Survey.objects.get(pk=uid)

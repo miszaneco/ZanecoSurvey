@@ -16,7 +16,7 @@ class Sub_Rating(models.Model):
         ]
     )
     rate_type = models.CharField(max_length=20)
-    sub_rating = models.CharField(max_length=100)
+    sub_rating = models.CharField(max_length=255)
     
     created_by = models.CharField(max_length=20, default='user')
     created_date = models.DateTimeField(auto_now_add=True)

@@ -2,13 +2,6 @@ from django import forms
 from django.forms import ModelForm, widgets
 from .models import Survey, Sub_Rating
 
-SUB_RATING = Sub_Rating.objects.all().values('sub_rating', 'sub_rating')
-
-SUB_RATINGS = []
-
-for item in SUB_RATINGS:
-    SUB_RATINGS.append(item)
-
 RATE_TYPE = [
     ('Excellent', 'Excellent'),
     ('Good', 'Good'),
@@ -21,22 +14,19 @@ class FormSurvey(forms.ModelForm):
     class Meta:
         model = Survey
         # fields = '__all__'
-        fields = ['code', 'rate', 'rate_type', 'comments']
+        fields = ['code', 'rate', 'rate_type', 'sub_rating', 'comments']
         labels = {
             'code': 'Code',
             'rate': 'Rate',
             'rate_type': 'Rating',
-            'sub_rating': 'Sub_Rating',
+            'sub_rating': 'Sub Rating',
             'comments': 'Comments',
         }
         widgets = {
-            'code': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'ABC123',
-                }),
+            'code': forms.TextInput(attrs={'class': 'form-control','placeholder': 'ABC123',}),
             'rate': forms.NumberInput(attrs={'class': 'form-control'}),
             'rate_type': forms.Select(attrs={'class': 'form-control'}),
-            'sub_rating': forms.Select(attrs={'class': 'form-control'}, choices=SUB_RATINGS),
+            'sub_rating': forms.Select(attrs={'class': 'form-control'}),
             'comments': forms.TextInput(attrs={'class': 'form-control'}),
         }
     
