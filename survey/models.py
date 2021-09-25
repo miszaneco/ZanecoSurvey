@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.conf import settings
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -8,7 +7,6 @@ import uuid
 
 class Sub_Rating(models.Model):
     uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
-    
     rate = models.IntegerField(default=0, help_text='Input 1 to 5  only',
         validators = [
             MinValueValidator(0),
@@ -18,9 +16,9 @@ class Sub_Rating(models.Model):
     rate_type = models.CharField(max_length=20)
     sub_rating = models.CharField(max_length=255)
     
-    created_by = models.CharField(max_length=20, default='user')
+    created_by = models.CharField(max_length=20)
     created_date = models.DateTimeField(auto_now_add=True)
-    updated_by = models.CharField(max_length=20, default='user')
+    updated_by = models.CharField(max_length=20)
     updated_date = models.DateTimeField(auto_now=True)
     
     def __str__(self):
@@ -28,7 +26,6 @@ class Sub_Rating(models.Model):
     
 class Survey(models.Model):
     uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
-    
     RATE_TYPE = [
         ('Excellent', 'Excellent'),
         ('Good', 'Good'),
@@ -36,9 +33,7 @@ class Survey(models.Model):
         ('Poor', 'Poor'),
         ('Worst', 'Worst'),
     ]
-    
     code = models.CharField(max_length=10, verbose_name='Queue Code', help_text='Scan your Queue Code')
-    
     rate = models.IntegerField(default=0, help_text='Input 1 to 5  only',
         validators = [
             MinValueValidator(0),
@@ -50,9 +45,9 @@ class Survey(models.Model):
     comments = models.TextField(max_length=255, null=True, blank=True)
     posting_date = models.DateField(null=True, auto_now_add=True, verbose_name='Posting Date')
     
-    created_by = models.CharField(max_length=20, default='user')
+    created_by = models.CharField(max_length=20)
     created_date = models.DateTimeField(auto_now_add=True)
-    updated_by = models.CharField(max_length=20, default='user')
+    updated_by = models.CharField(max_length=20)
     updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):

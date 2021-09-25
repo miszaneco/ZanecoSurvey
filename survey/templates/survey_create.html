@@ -152,7 +152,13 @@
 
 {% endblock content %}
 
-<script></script>
+<script>
+  $('#sub_rating').on('select2:select', function (e) {
+    var data = e.params.data;
+    alert(data);
+    console.log(data);
+  });
+</script>
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}

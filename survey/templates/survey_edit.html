@@ -77,22 +77,24 @@
 
                 <div class="form-group">
                   <label for="rate_type">Rating</label>
-                  <select class="form-control form-control-lg" id="rate_type" name="rate_type" value="{{ survey.rate_type }}">
-                      <option value="Excellent">Excellent</option>
-                      <option value="Good">Good</option>
-                      <option value="Fair">Fair</option>
-                      <option value="Poor">Poor</option>
-                      <option value="Worst">Worst</option>
+                  <select class="form-control form-control-lg" id="rate_type" name="rate_type">
+                    <option selected="{{ survey.rate_type }}">{{ survey.rate_type }}</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Poor">Poor</option>
+                    <option value="Worst">Worst</option>
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label for="sub_rating">Sub-Rating</label>
                   <div class="select2-info">
-                    <select class="select2 select2.info select2-lg" id="sub_rating" name="sub_rating" multiple="multiple" data-placeholder="Select Sub-Rating" data-dropdown-css-class="select2-info" style="width: 100%;">
+                    <select class="select2 select2-lg" id="sub_rating" name="sub_rating" multiple="multiple" data-placeholder="Select Sub-Rating" data-dropdown-css-class="select2-info" style="width: 100%;">
                       {% for item in sub_ratings %}
                         <option>{{ item.sub_rating }}</option>
                       {% endfor %}
+                      <option selected="selected">{{ survey.sub_rating }}</option>
                     </select>
                   </div>
                 </div>
@@ -142,7 +144,11 @@
 {% endblock content %}
 
 <script>
-  
+   $('#sub_rating').on('select2:close', function (e) {
+    var data = e.params.data;
+    alert(data)
+    console.log(data);
+  });
 </script>
 
 <!-- Specific Page JS goes HERE  -->

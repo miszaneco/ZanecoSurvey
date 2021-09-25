@@ -23,7 +23,7 @@ class FormSurvey(forms.ModelForm):
             'comments': 'Comments',
         }
         widgets = {
-            'code': forms.TextInput(attrs={'class': 'form-control','placeholder': 'ABC123',}),
+            'code': forms.TextInput(attrs={'class': 'form-control',}),
             'rate': forms.NumberInput(attrs={'class': 'form-control'}),
             'rate_type': forms.Select(attrs={'class': 'form-control'}),
             'sub_rating': forms.Select(attrs={'class': 'form-control'}),

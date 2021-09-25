@@ -1,21 +1,27 @@
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import FormSubRating, FormSurvey
 from .models import Survey, Sub_Rating
 
+from datetime import datetime, date
+
 # Create your views here.
 @login_required(login_url="/login/")
 def index(request):
-    surveyExcellent = Survey.objects.filter(rate_type__contains='Excellent').count()
-    surveyGood = Survey.objects.filter(rate_type__contains='Good').count()
-    surveyFair = Survey.objects.filter(rate_type__contains='Fair').count()
-    surveyPoor = Survey.objects.filter(rate_type__contains='Poor').count()
+    today = datetime.today().date()
+   
     context = {
-        'surveyExcellent': surveyExcellent,
-        'surveyGood': surveyGood,
-        'surveyFair': surveyFair,
-        'surveyPoor': surveyPoor,
+        'surveyTodayExcellent': Survey.objects.filter(rate_type__contains='Excellent', posting_date=today).count(),
+        'surveyTodayGood': Survey.objects.filter(rate_type__contains='Good', posting_date=today).count(),
+        'surveyTodayFair': Survey.objects.filter(rate_type__contains='Fair', posting_date=today).count(),
+        'surveyTodayPoor': Survey.objects.filter(rate_type__contains='Poor', posting_date=today).count(),
+        
+        'surveyExcellent': Survey.objects.filter(rate_type__contains='Excellent').count(),
+        'surveyGood': Survey.objects.filter(rate_type__contains='Good').count(),
+        'surveyFair': Survey.objects.filter(rate_type__contains='Fair').count(),
+        'surveyPoor': Survey.objects.filter(rate_type__contains='Poor').count(),
     }
     
     return render(request, 'dashboard.html', context)
@@ -27,6 +33,7 @@ def survey_create(request):
 
         if form.is_valid():
             object = form.save(commit=False)
+            object.created_by = request.user.username
             object.save()
             return redirect(survey_create)
     else:
@@ -49,8 +56,9 @@ def survey_edit(request, uid):
     if request.method == 'POST':
         if form.is_valid():
             object = form.save(commit=False)
-        object.save()
-        return redirect(surveys)
+            object.updated_by = request.user.username
+            object.save()
+            return redirect(surveys)
     
     else:
         context = {
@@ -74,13 +82,13 @@ def surveys(request):
     return render(request, 'surveys.html', context)
 
 @login_required(login_url="/login/")
-def surveys_by_rate(request, rate):
-    if rate > 0:
-        surveys = Survey.objects.raw(f"SELECT * FROM survey_survey WHERE rate = '{rate}'")
-        context = {
-            'surveys': surveys
-        }
-        return render(request, 'surveys.html', context)
+def surveys_by_rate(request, rate_type):
+    # if rate > 0:
+    surveys = Survey.objects.raw(f"SELECT * FROM survey_survey WHERE rate_type LIKE '{rate_type}'")
+    context = {
+        'surveys': surveys
+    }
+    return render(request, 'surveys.html', context)
 
 @login_required(login_url="/login/")
 def sub_rating_create(request):
@@ -88,7 +96,9 @@ def sub_rating_create(request):
         form = FormSubRating(request.POST)
 
         if form.is_valid():
-            form.save()
+            object = form.save(commit=False)
+            object.created_by = request.user.username
+            object.save()
             return redirect(sub_ratings)
     else:
         form = FormSubRating()
@@ -103,6 +113,7 @@ def sub_rating_edit(request, uid):
     
     if form.is_valid():
         object = form.save(commit=False)
+        object.updated_by = request.user.username
         object.save()
         return redirect(sub_ratings)
     
