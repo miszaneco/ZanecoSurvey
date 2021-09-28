@@ -90,7 +90,7 @@
                 <div class="form-group">
                   <label for="sub_rating">Sub-Rating</label>
                   <div class="select2-info">
-                    <select class="select2 select2-lg" id="sub_rating" name="sub_rating" multiple="multiple" data-placeholder="Select Sub-Rating" data-dropdown-css-class="select2-info" style="width: 100%;">
+                    <select class="select2" id="sub_rating" name="sub_rating" multiple="multiple" data-placeholder="Select Sub-Rating" data-dropdown-css-class="select2-info" style="width: 100%;">
                       {% for item in sub_ratings %}
                         <option>{{ item.sub_rating }}</option>
                       {% endfor %}
@@ -143,14 +143,6 @@
 
 {% endblock content %}
 
-<script>
-   $('#sub_rating').on('select2:close', function (e) {
-    var data = e.params.data;
-    alert(data)
-    console.log(data);
-  });
-</script>
-
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
@@ -170,6 +162,7 @@
 
 <!-- Select2 -->
 <script src="/static/assets/plugins/select2/js/select2.full.min.js"></script>
+
 
 <script>
   $(function () {

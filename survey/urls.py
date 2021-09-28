@@ -8,6 +8,7 @@ urlpatterns = [
     path('survey_delete/<uid>', views.survey_delete, name='survey_delete'),
     path('surveys', views.surveys, name='surveys'),
     path('surveys_by_rate/<str:rate_type>', views.surveys_by_rate, name='surveys_by_rate'),
+    path('surveys_by_rate_today/<str:rate_type>', views.surveys_by_rate_today, name='surveys_by_rate_today'),
     
     path('sub_rating_create', views.sub_rating_create, name='sub_rating_create'),
     path('sub_rating_edit/<uid>', views.sub_rating_edit, name='sub_rating_edit'),

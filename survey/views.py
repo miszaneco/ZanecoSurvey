@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import FormSubRating, FormSurvey
 from .models import Survey, Sub_Rating
+import sweetify
 
 from datetime import datetime, date
 
@@ -23,7 +24,6 @@ def index(request):
         'surveyFair': Survey.objects.filter(rate_type__contains='Fair').count(),
         'surveyPoor': Survey.objects.filter(rate_type__contains='Poor').count(),
     }
-    
     return render(request, 'dashboard.html', context)
 
 @login_required(login_url="/login/")
@@ -35,6 +35,15 @@ def survey_create(request):
             object = form.save(commit=False)
             object.created_by = request.user.username
             object.save()
+            args = dict(
+                title='Submitted', 
+                icon='success', 
+                text="Good Job! The survey you just made has been successfully submitted. Thank You!", 
+                timer=5000, 
+                timerProgressBar='true', 
+                persistent="Close"
+            )
+            sweetify.multiple(request, args)
             return redirect(survey_create)
     else:
         form = FormSurvey()
@@ -52,6 +61,7 @@ def survey_edit(request, uid):
     survey = Survey.objects.get(pk=uid)
     form = FormSurvey(request.POST or None, instance=survey)
     sub_ratings = Sub_Rating.objects.all().values('sub_rating')
+    
     
     if request.method == 'POST':
         if form.is_valid():
@@ -83,8 +93,15 @@ def surveys(request):
 
 @login_required(login_url="/login/")
 def surveys_by_rate(request, rate_type):
-    # if rate > 0:
     surveys = Survey.objects.raw(f"SELECT * FROM survey_survey WHERE rate_type LIKE '{rate_type}'")
+    context = {
+        'surveys': surveys
+    }
+    return render(request, 'surveys.html', context)
+
+def surveys_by_rate_today(request, rate_type):
+    today = datetime.today().date()
+    surveys = Survey.objects.raw(f"SELECT * FROM survey_survey WHERE rate_type LIKE '{rate_type}' AND posting_date = '{today}'")
     context = {
         'surveys': surveys
     }

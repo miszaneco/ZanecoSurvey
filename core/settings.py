@@ -31,11 +31,15 @@ INSTALLED_APPS = [
     
     # 3rd Party Apps
     # 'star_ratings',
+    'sweetify',
     
     # Project Apps
     'app',  # Enable the inner app
     'survey',
 ]
+
+# possible options: 'sweetalert', 'sweetalert2' - default is 'sweetalert2'
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

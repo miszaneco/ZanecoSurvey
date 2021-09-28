@@ -33,14 +33,16 @@
         <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
-s
 </div>
 <!-- ./wrapper -->
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
 {% endblock javascripts %}
+
+{% load sweetify %}
+{% sweetify %}
 
 </body>
 </html>
