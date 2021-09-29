@@ -48,7 +48,6 @@ def survey_create(request):
     else:
         form = FormSurvey()
         sub_ratings = Sub_Rating.objects.all().values('sub_rating')
-        
         context = {
             'form': form,
             'sub_ratings': sub_ratings,
@@ -60,8 +59,6 @@ def survey_create(request):
 def survey_edit(request, uid):
     survey = Survey.objects.get(pk=uid)
     form = FormSurvey(request.POST or None, instance=survey)
-    sub_ratings = Sub_Rating.objects.all().values('sub_rating')
-    
     
     if request.method == 'POST':
         if form.is_valid():
@@ -71,6 +68,7 @@ def survey_edit(request, uid):
             return redirect(surveys)
     
     else:
+        sub_ratings = Sub_Rating.objects.all().values('sub_rating')
         context = {
             'form': form,
             'survey': survey,

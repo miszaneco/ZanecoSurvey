@@ -18,7 +18,7 @@ class FormSurvey(forms.ModelForm):
         labels = {
             'code': 'Code',
             'rate': 'Rate',
-            'rate_type': 'Rating',
+            'rate_type': 'Rate Type',
             'sub_rating': 'Sub Rating',
             'comments': 'Comments',
         }
@@ -36,9 +36,9 @@ class FormSubRating(forms.ModelForm):
         # fields = '__all__'
         fields = ['rate', 'rate_type', 'sub_rating']
         labels = {
-            'rate': '',
-            'rate_type': '',
-            'sub_rating': '',
+            'rate': 'Rate',
+            'rate_type': 'Rate Type',
+            'sub_rating': 'Sub Rating',
         }
         widgets = {
             'rate': forms.NumberInput(attrs={'class': 'form-control'}),

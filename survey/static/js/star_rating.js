@@ -66,38 +66,3 @@ const setStars = (selection) => {
     }
   }
 }
-
-
-
-function get_rate(iRate)
-  {
-    // var iRate = document.getElementById("rate").value;
-    
-    // console.log(iRate);
-    
-    switch(iRate)
-    {
-      case 1:
-        
-        rate = 'Worst';
-        break;
-      
-      case 2:
-        rate = 'Poor';
-        break;
-      
-      case 3:
-        rate = 'Fair';
-        break;
-
-      case 4:
-        rate = 'Good';
-        break;
-
-      case 5:
-        rate = 'Excellent';
-        break;
-
-      default:
-    }
-  }

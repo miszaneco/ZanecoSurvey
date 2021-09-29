@@ -58,7 +58,6 @@
             <div class="card-body">
               <form class="form-sub-rating-edit" method="POST" action="">
                 {% csrf_token %}
-                {% comment %} {{ form.as_p }} {% endcomment %}
 
                 <div class="form-group">
                   <label for="rating">Rating</label>
@@ -66,8 +65,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="rate_type">Impression</label>
-                  <select class="custom-select" id="rate_type" name="rate_type" value="{{ sub_rating.rate_type }}">
+                  <label for="rate_type">Rate Type</label>
+                  <select id="rate_type" name="rate_type">
+                  <option selected="{{ survey.rate_type }}">{{ survey.rate_type }}</option>
                     <option value="Excellent">Excellent</option>
                     <option value="Good">Good</option>
                     <option value="Fair">Fair</option>
@@ -133,7 +133,7 @@
 <script src="/static/assets/js/demo.js"></script>
 
 <!-- Ratings -->
-<script src="/static/js/functions.js"></script>
+<script src="/static/js/survey.js"></script>
 
 <!-- Page specific script -->
 

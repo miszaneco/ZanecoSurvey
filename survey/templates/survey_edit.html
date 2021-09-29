@@ -67,17 +67,18 @@
                     <i class="fas fa-qrcode mr-1"></i>
                     Queue Code
                   </label>
-                  <input class="form-control form-control-lg" type="text" id="code" name="code" maxlength="10" required value="{{ survey.code }}">
+                  <input class="form-control form-control-lg" type="text" id="code" name="code" maxlength="6" required value="{{ survey.code }}">
                 </div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                   <label for="rate">Rate Number</label>
-                  <input class="form-control form-control-lg" type="number" id="rate" name="rate" required value="{{ survey.rate }}">
-                </div>
+                </div>-->
 
+                <input type="hidden" id="rate" name="rate" required value="{{ survey.rate }}">
+                
                 <div class="form-group">
-                  <label for="rate_type">Rating</label>
-                  <select class="form-control form-control-lg" id="rate_type" name="rate_type">
+                  <label for="rate_type">Rate Type</label>
+                  <select class="form-control form-control-lg" id="rate_type" name="rate_type" onchange="onchange_rate_type(this)">
                     <option selected="{{ survey.rate_type }}">{{ survey.rate_type }}</option>
                     <option value="Excellent">Excellent</option>
                     <option value="Good">Good</option>
@@ -128,11 +129,6 @@
           <!-- /.card -->
         </div>
         <!--/.col (left) -->
-        <!-- right column -->
-        <div class="col-md-6">
-
-        </div>
-        <!--/.col (right) -->
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -158,11 +154,10 @@
 <script src="/static/assets/js/demo.js"></script>
 
 <!-- Ratings -->
-<script src="/static/js/functions.js"></script>
+<script src="/static/js/survey.js"></script>
 
 <!-- Select2 -->
 <script src="/static/assets/plugins/select2/js/select2.full.min.js"></script>
-
 
 <script>
   $(function () {
@@ -177,7 +172,6 @@
       $("input[data-bootstrap-switch]").each(function(){
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
       });
-
     })
 </script>
 
